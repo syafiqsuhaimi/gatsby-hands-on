@@ -9,47 +9,17 @@ const StyledSideContent = styled.nav`
     ::-webkit-scrollbar {
         display: none;
     }
-
-    overflow: auto;
     padding: 10px 0;
-
-    ul {
-        height: 100%;
-        margin: 0;
-        list-style: none;
-    }
-
-    ul li {
-        margin: 0;
-    }
-
-    ul li div {
-        padding: 5px;
-        margin-left: 50px;
-    }
 `;
 
 const Category = styled(Link)`
     display: block;
     color: ${props =>
         props.active ? props.theme.side.category.activeText : "inherit"};
-    background-color: ${props =>
-        props.active && props.theme.side.category.activeBack};
-    text-transform: uppercase;
-    font-weight: bold;
-
+    text-align: right;
+    padding: 5px 0;
     &:hover {
-        background-color: ${props => props.theme.side.category.activeBack};
         color: ${props => props.theme.side.category.activeText} !important;
-    }
-
-    i {
-        margin: 10px 20px 10px 30px;
-        vertical-align: middle;
-    }
-
-    span {
-        vertical-align: middle;
     }
 `;
 
@@ -57,18 +27,33 @@ const SideContent = ({ activeMenu }) => (
     <StaticQuery
         query={query}
         render={data => {
-            const category = data.site.siteMetadata.category;
+            const category = [
+                {
+                    id: "about us"
+                },
+                {
+                    id: "visible brand action"
+                },
+                {
+                    id: "projects"
+                },
+                {
+                    id: "the player"
+                },
+                {
+                    id: "the process"
+                },
+            ];
             return (
                 <StyledSideContent>
                     {category.map(node => {
-                        const isActive = activeMenu === node.id;
+                        //const isActive = activeMenu === node.id;
                         return (
                             <Category
                                 key={node.id}
                                 to={`/category/${node.id}`}
-                                active={isActive ? 1 : 0}
+                            //active={isActive ? 1 : 0}
                             >
-                                <i className={`fas ${node.icon} fa-fw`} />
                                 <span>{node.id}</span>
                             </Category>
                         );

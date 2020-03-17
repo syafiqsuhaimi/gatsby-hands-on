@@ -8,10 +8,10 @@ import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 // import { local, getItem, setItem } from "utils/storage";
 // import ThemeSwitch from "components/molecules/themeSwitch";
-import SideHeader from "components/organisms/sideHeader";
+import SideHeader from "../organisms/sideHeader";
 import SideContent from "components/organisms/sideContent";
-import SideFooter from "components/organisms/sideFooter";
-import MainHeader from "components/organisms/mainHeader";
+import SideFooter from "../organisms/sideFooter";
+import MainHeader from "../organisms/mainHeader";
 import MainContent from "components/organisms/mainContent";
 
 const GlobalStyle = createGlobalStyle`
@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     html, body {
         overflow: auto;
         background-color: ${props => props.theme.main.defaultBack};
+        height: 100%;
 
         ${props =>
             props.mobileOpen &&
@@ -52,37 +53,39 @@ const SideBar = styled.div`
     position: fixed;
     z-index: 3;
     top: 0;
-    left: 0;
+    right: 0;
     overflow-x: hidden;
+    padding: 30px;
+    height: 100vh;
 
     background-color: ${props => props.theme.side.defaultBack};
     color: ${props => props.theme.side.defaultText} !important;
 
     transition: margin 0.5s;
-    margin-left: ${props => (props.mobileOpen ? 0 : "-280px")};
+    margin-right: ${props => (props.mobileOpen ? 0 : "-280px")};
 
     @media all and (min-width: 992px) {
         min-width: 280px;
-        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 `;
 
 const Main = styled.div`
     margin-top: 50px;
-    margin-left: 0;
+    margin-right: 0;
 
     color: ${props => props.theme.main.defaultText} !important;
 
     @media all and (min-width: 992px) {
         margin-top: 0;
-        margin-left: 280px !important;
+        margin-right: 280px !important;
     }
 `;
 
 const MainOverlay = styled.div`
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100%;
     width: 100%;
     background-color: ${props => props.theme.main.overlayBack};
@@ -104,6 +107,12 @@ export default class Layout extends React.Component {
         };
     }
 
+    themeToggle = e => {
+        this.setState({
+            isDarkMode: !this.state.isDarkMode
+        });
+    };
+
     sideToggle = e => {
         const open = !this.state.mobile_side;
         this.setState({
@@ -115,7 +124,7 @@ export default class Layout extends React.Component {
         const { children, activeMenu } = this.props;
         const { mobile_side, isDarkMode } = this.state;
         return (
-            <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+            <ThemeProvider theme={ darkTheme }>
                 <Fragment>
                     <GlobalStyle mobileOpen={mobile_side} />
                     <SideBar mobileOpen={mobile_side}>

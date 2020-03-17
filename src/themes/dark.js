@@ -1,16 +1,16 @@
 export default {
     main: {
-        defaultBack: "#303030",
+        defaultBack: "#800000",
         defaultText: "#eee",
         overlayBack: "#000",
         header: {
-            back: "#212121",
+            back: "#800000",
             text: "#eee",
             button: "#eee"
         }
     },
     side: {
-        defaultBack: "#212121",
+        defaultBack: "#800000",
         defaultText: "#eee",
         bio: {
             circle: "#ebb424",
@@ -18,7 +18,7 @@ export default {
             activeText: "#eee"
         },
         category: {
-            activeText: "#000",
+            activeText: "#FFFF33",
             activeBack: "#ebb424"
         }
     },

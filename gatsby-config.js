@@ -5,7 +5,7 @@ const siteConfig = require("./config.js");
 module.exports = {
     siteMetadata: {
         siteUrl: siteConfig.url,
-        title: siteConfig.title,
+        title: "Samballab",
         lang: siteConfig.lang,
         description: siteConfig.description,
         defaultKeywords: siteConfig.defaultKeywords,

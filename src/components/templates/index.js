@@ -4,6 +4,20 @@ import { graphql } from "gatsby";
 import Layout from "components/templates/layout";
 import PostList from "components/organisms/postList";
 import SEO from "components/seo";
+import styled from "styled-components";
+
+const Title = styled.h1`
+    color: #FFFF99;
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 0;
+    
+    @media all and (min-width: 992px) {
+        padding: 50px 75px;
+        font-size: 3rem;
+        max-width: 1200px;
+    }
+`
 
 class BlogIndex extends React.Component {
     render() {
@@ -17,12 +31,9 @@ class BlogIndex extends React.Component {
                     title="Main"
                     keywords={[`blog`, `gatsby`, `javascript`, `react`]}
                 />
-                <PostList
-                    data={posts}
-                    page={pageContext}
-                    path={"/"}
-                    pageListSize={pageListSize}
-                />
+                <Title>
+                    Want to get millennials into a Cognac they know nothing about?<br /> Make them the expert.
+                </Title>
             </Layout>
         );
     }
